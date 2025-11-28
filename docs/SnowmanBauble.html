@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christmas AR Snowman Bauble Download</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(circle at top, #d8f3fc, #bcddee, #9cc7d9);
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        overflow-x: hidden;
+        color: #333;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        color: #b30000;
+        margin-top: 30px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    p {
+        width: 85%;
+        max-width: 450px;
+        margin: 0 auto;
+        font-size: 1.05rem;
+        line-height: 1.5;
+    }
+
+    /* Snow Globe Container */
+    .globe-container {
+        margin: 40px auto 20px;
+        width: 280px;
+        height: 280px;
+        position: relative;
+    }
+
+    /* Glass Sphere */
+    .globe {
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 30% 30%, 
+                    rgba(255,255,255,0.7), 
+                    rgba(200,230,255,0.2) 60%,
+                    rgba(180,210,240,0.1) 100%);
+        border-radius: 50%;
+        box-shadow:
+            inset 0 0 40px rgba(255,255,255,0.5),
+            inset 0 0 20px rgba(255,255,255,0.6),
+            0 8px 18px rgba(0,0,0,0.25);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Snowman inside the globe */
+    .snowman {
+        width: 150px;
+        position: absolute;
+        left: 50%;
+        bottom: 25px;
+        transform: translateX(-50%);
+        animation: float 3.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translate(-50%, 0); }
+        50% { transform: translate(-50%, -12px); }
+        100% { transform: translate(-50%, 0); }
+    }
+
+    /* Snowflakes inside globe */
+    .globe .flake {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        from { transform: translateY(-10px); }
+        to { transform: translateY(320px); }
+    }
+
+    /* Globe Base */
+    .base {
+        width: 200px;
+        height: 50px;
+        background: #5d4037;
+        margin: -10px auto 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    /* Download Button */
+    .download-btn {
+        display: inline-block;
+        background: #2e7d32;
+        color: #fff;
+        padding: 15px 25px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-top: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .download-btn:hover {
+        background: #1b5e20;
+    }
+
+    /* Page snow (falling outside) */
+    .page-snow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 50;
+    }
+
+    .page-snow span {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.8;
+        animation: fall2 linear infinite;
+    }
+
+    @keyframes fall2 {
+        0% { transform: translateY(-20px); }
+        100% { transform: translateY(105vh); }
+    }
+</style>
+</head>
+
+<body>
+
+<h1>AR Snowman Bauble</h1>
+<p>Download the app below and scan the QR code to bring your festive snowman to life!</p>
+
+<!-- Snow globe -->
+<div class="globe-container">
+    <div class="globe" id="globe">
+        <!-- Snowman Image -->
+        <img src="snowmanbauble.png" class="snowman" alt="Snowman">
+    </div>
+</div>
+
+<div class="base"></div>
+
+<!-- QR CODE GOES HERE -->
+
+<p style="margin-top:15px; font-size:0.9rem;">
+    On Android, you may need to allow “Install unknown apps”.
+</p>
+
+
+<!-- Animated page snow -->
+<div class="page-snow" id="snowContainer"></div>
+
+<script>
+    // Generate snow inside globe
+    const globe = document.getElementById("globe");
+    for (let i = 0; i < 30; i++) {
+        let flake = document.createElement("div");
+        flake.className = "flake";
+        flake.style.left = Math.random() * 100 + "%";
+        flake.style.animationDuration = (2 + Math.random() * 3) + "s";
+        flake.style.animationDelay = Math.random() * 3 + "s";
+        globe.appendChild(flake);
+    }
+
+    // Page snow
+    const snow = document.getElementById("snowContainer");
+    for (let i = 0; i < 25; i++) {
+        let s = document.createElement("span");
+        s.style.left = Math.random() * 100 + "%";
+        s.style.animationDuration = (3 + Math.random() * 4) + "s";
+        s.style.animationDelay = Math.random() * 4 + "s";
+        snow.appendChild(s);
+    }
+</script>
+
+</body>
+</html>

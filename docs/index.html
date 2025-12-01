@@ -149,6 +149,24 @@
         animation: fall2 linear infinite;
     }
 
+    .video-wrapper {
+    width: 100%;
+    max-width: 380px; /* Adjust width here */
+    margin: 30px auto;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    background: #000;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+}
+
+
     @keyframes fall2 {
         0% { transform: translateY(-20px); }
         100% { transform: translateY(105vh); }
@@ -179,6 +197,12 @@
 <p style="margin-top:15px; font-size:0.9rem;">
     On Android, you may need to allow “Install unknown apps”.
 </p>
+
+<div class="video-wrapper">
+    <video controls playsinline>
+        <source src="SnowmanPreview.mp4" type="video/mp4">
+    </video>
+</div>
 
 
 <!-- Animated page snow -->
